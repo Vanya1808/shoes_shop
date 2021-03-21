@@ -79,7 +79,7 @@ export class DataProvider extends Component {
 
 
 
-    const check =  cart.every(item =>{
+    const check =  cart.every(function(item){
       return item._id !== id
     })
     
