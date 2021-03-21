@@ -67,107 +67,129 @@ export class DataProvider extends Component {
         "price": 83,
         "colors": ["black", "red", "blue"],
         "count": 1,
+      },
+      
+      {
+        "_id": "6",
+        "title": "Kyrie Low 3",
+        "src":
+          "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,b_rgb:f5f5f5/5bbf3bda-d97a-410d-adac-1de963364cf3/kyrie-low-3-basketball-shoe-4VT0rq.jpg",
+        "description":
+          " Sail/Black/Team Orange",
+        "content":
+          "Kyrie Irving's ability to stop, go and cut while handling the ball is unrivaled. The Kyrie Low 3 enables agility and traction in multiple directions while helping keep quick-cutting players locked in over the cushioning. Its low-cut design has aggressive rubber tread that wraps up the sides and a secure midfoot strap for a secure on-court feel.",
+        "price": 99.97,
+        "colors": ["black", "red", "blue", "yellow"],
+        "count": 1,
+      },
+      {
+        "_id": "7",
+        "title": "Air Jordan 1 Low",
+        "src":
+          "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,b_rgb:f5f5f5/f4479d95-3a96-438d-ab38-f8c61d973e6f/air-jordan-1-low-shoe-z3Tl2VeJ.jpg",
+        "description":
+          "Gym Red/White/Black",
+        "content":
+          "Inspired by the original that debuted in 1985, the Air Jordan 1 Low offers a clean, classic look that's familiar yet always fresh. It's made for casual mode, with an iconic design that goes with everything and never goes out of style.",
+        "price": 90,
+        "colors": ["black", "red", "blue", "yellow"],
+        "count": 1,
       }
+
+
+
+      
+      
+
     ],
     cart: [],
     total: 0
   }
 
-  addCart = (id) => {
+  addCart = (id) =>{
     const {products, cart} = this.state;
-
-
-
-
-    const check =  cart.every(item =>{
-      return item._id !== id
+    const check = cart.every((item) => {
+        return item._id !== id
     })
-    
     if(check){
-      const data = products.filter(product => {
-        return product._id === id
-      })
-    
-   
-   this.setState({cart: [...cart,...data]});
-    
+        const data = products.filter(product =>{
+            return product._id === id
+        })
+        this.setState({cart: [...cart,...data]})
     }else{
-      alert("The product has been added to cart.")
+        alert("The product has been added to cart.")
     }
+};
 
-  }
-
-
-  reduction = id =>{
-    const {cart} = this.state;
+reduction = id =>{
+    const { cart } = this.state;
     cart.forEach(item =>{
-      if(item._id === id){
-        item.count === 1 ? item.count = 1 : item.count -=1;
-      }
-    })
-    this.setState({cart: cart});
-  }
-  increase = id =>{
-    const {cart} = this.state;
-    cart.forEach(item =>{
-      if(item._id === id){
-        item.count +=1;
-      }
-    })
-    this.setState({cart: cart});
-  }
-
-  removeProduct = id =>{
-    if(window.confirm("Are you sure you want to delete it")){
-      const {cart} = this.state;
-      cart.forEach((item, index) =>{
         if(item._id === id){
-          cart.splice(index, 1)
+            item.count === 1 ? item.count = 1 : item.count -=1;
         }
-      })
-      this.setState({cart: cart});
-      this.getTotal();
+    })
+    this.setState({cart: cart});
+    this.getTotal();
+};
+
+increase = id =>{
+    const { cart } = this.state;
+    cart.forEach(item =>{
+        if(item._id === id){
+            item.count += 1;
+        }
+    })
+    this.setState({cart: cart});
+    this.getTotal();
+};
+
+removeProduct = id =>{
+    if(window.confirm("Do you want to delete this product?")){
+        const {cart} = this.state;
+        cart.forEach((item, index) =>{
+            if(item._id === id){
+                cart.splice(index, 1)
+            }
+        })
+        this.setState({cart: cart});
+        this.getTotal();
     }
-    
-  }
+   
+};
 
-
-  getTotal = () =>{
+getTotal = ()=>{
     const{cart} = this.state;
-    const res = cart.reduce((prev, item) =>{
+    const res = cart.reduce((prev, item) => {
         return prev + (item.price * item.count);
     },0)
-
     this.setState({total: res})
-  }
+};
 
-
-  componentDidUpdate(){
+componentDidUpdate(){
     localStorage.setItem('dataCart', JSON.stringify(this.state.cart))
     localStorage.setItem('dataTotal', JSON.stringify(this.state.total))
-  }
+};
 
-  componentDidMount(){
+componentDidMount(){
     const dataCart = JSON.parse(localStorage.getItem('dataCart'));
     if(dataCart !== null){
-      this.setState({cart: dataCart});
+        this.setState({cart: dataCart});
     }
     const dataTotal = JSON.parse(localStorage.getItem('dataTotal'));
-    if(dataCart !== null){
-      this.setState({cart: dataTotal});
+    if(dataTotal !== null){
+        this.setState({total: dataTotal});
     }
-    
-  }
-  
+}
 
-  render() {
-    const { products, cart, total } = this.state;
-    const {addCart, reduction,increase,removeProduct,getTotal} = this;
 
+render() {
+    const {products, cart,total} = this.state;
+    const {addCart,reduction,increase,removeProduct,getTotal} = this;
     return (
-      <DataContext.Provider value={{ products,  addCart, cart, reduction, increase,removeProduct,total,getTotal}}>
-        {this.props.children}
-      </DataContext.Provider>
-    );
-  }
+        <DataContext.Provider 
+        value={{products, addCart, cart, reduction,increase,removeProduct,total,getTotal}}>
+            {this.props.children}
+        </DataContext.Provider>
+    )
+}
 }
