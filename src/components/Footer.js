@@ -59,53 +59,54 @@ function Footer() {
           </div>
         </div>
       </div>
-      <section className="social-media">
-        <div className="social-media-wrap">
-          <div className="footer-logo">
+      <section class="social-media">
+        <div class="social-media-wrap">
+          <div class="footer-logo">
             <Link to="/" className="social-logo">
               Nike <i className="fa fa-typo3" />
             </Link>
-            <small className="website-rights">Nike © 2021</small>
-            <div className="social-icons">
+            <small class="website-rights">Vanya Goudz © 2021</small>
+            <div class="social-icons">
               <Link
-                className="social-icon-link facebook"
+                class="social-icon-link facebook"
                 to="/"
                 target="_blank"
                 aria-label="Facebook"
               >
-                <i className="fab fa-facebook-f"></i>
+                <i class="fab fa-facebook-f"></i>
               </Link>
               <Link
-                className="social-icon-link instagram"
+                class="social-icon-link instagram"
                 to="/"
                 target="_blank"
                 aria-label="Instagram"
               >
-                <i className="fab fa-instagram"></i>
+                <i class="fab fa-instagram"></i>
               </Link>
               <Link
-                className="social-icon-link youtube"
+                class="social-icon-link youtube"
                 to="/"
                 target="_blank"
                 aria-label="Youtube"
               >
-                <i className="fab fa-youtube"></i>
+                <i class="fab fa-youtube"></i>
               </Link>
               <Link
-                className="social-icon-link twitter"
+                class="social-icon-link twitter"
                 to="/"
                 target="_blank"
                 aria-label="Twitter"
+               
               >
-                <i className="fab fa-twitter"></i>
+                <i class="fab fa-twitter"></i>
               </Link>
               <Link
-                className="social-icon-link linkedin"
+                class="social-icon-link linkedin"
                 to="/"
                 target="_blank"
                 aria-label="LinkedIn"
               >
-                <i className="fab fa-linkedin"></i>
+                <i class="fab fa-linkedin"></i>
               </Link>
               
 

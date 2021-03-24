@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Section from "./components/Section";
 import {DataProvider} from './components/Context'
 import Footer from './components/Footer';
+import About from './components/section/About.js'
 
 
 class App extends React.Component {
@@ -16,6 +17,7 @@ class App extends React.Component {
             <Section />
             <Footer />
            
+           
             
             
           </Router>
@@ -25,4 +27,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default App

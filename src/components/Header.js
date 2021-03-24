@@ -5,6 +5,7 @@ import CartIcon from "./images/shopping-cart-solid.svg";
 import { Link } from "react-router-dom";
 import './css/Header.css'
 import {DataContext} from './Context'
+import About from './section/About.js'
 
 
 
@@ -38,8 +39,10 @@ export class Header extends Component {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/product">Product</Link></li>
             <li><Link to="/contact">Contact</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/login">Login / Register</Link></li>
+            <li><Link to="/about">About</Link></li>           
+            <li><Link to="/login">Login</Link></li>
+            <li><Link to="/register">Register</Link></li>
+
             <li><Link to="/">Home</Link></li>
             <li className="close" onClick={this.menuToggle}>
                 <img src={Close} alt="" width="20"/>
